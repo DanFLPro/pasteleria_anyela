@@ -1,0 +1,153 @@
+/* ============================================================
+   ESTILOS
+   Los colores están como variables al inicio: cámbialos allí
+   y se actualiza toda la aplicación.
+   ============================================================ */
+
+:root {
+  --fondo: #fbf7f8;
+  --superficie: #ffffff;
+  --tinta: #3b2a33;
+  --tinta-suave: #7a6870;
+  --acento: #b8325a;
+  --acento-oscuro: #8f2445;
+  --pistacho: #dfeee2;
+  --pistacho-oscuro: #2f6b45;
+  --borde: #eadde2;
+  --radio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: "Nunito Sans", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2 { font-family: "Fraunces", Georgia, serif; margin: 0; }
+h2 { font-size: 1.2rem; margin-bottom: 1rem; }
+
+/* ---------- Estructura ---------- */
+.contenedor { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.columna { display: grid; gap: 1.25rem; }
+.disposicion { display: grid; grid-template-columns: 1fr 330px; gap: 1.5rem; align-items: start; }
+
+.panel {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.25rem;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado { margin-bottom: 1.5rem; }
+.encabezado p { margin: 0.25rem 0 1rem; color: var(--tinta-suave); }
+
+.nombre-negocio {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2rem; font-weight: 700; color: var(--acento);
+  border: 1px dashed transparent; background: transparent;
+  padding: 0.1rem 0.4rem; margin-left: -0.4rem; width: 100%;
+}
+.nombre-negocio:hover { border-color: var(--borde); }
+
+.pestanas { display: flex; gap: 0.5rem; }
+.pestanas button {
+  font: inherit; font-weight: 700; cursor: pointer;
+  padding: 0.55rem 1.1rem; border-radius: 999px;
+  border: 1px solid var(--borde); background: var(--superficie); color: var(--tinta-suave);
+}
+.pestanas button.activa { background: var(--acento); border-color: var(--acento); color: #fff; }
+
+/* ---------- Formularios ---------- */
+label { display: grid; gap: 0.25rem; font-size: 0.875rem; font-weight: 600; }
+
+input, select {
+  font: inherit; padding: 0.5rem 0.65rem; width: 100%;
+  border: 1px solid var(--borde); border-radius: 6px;
+  background: #fff; color: var(--tinta);
+}
+input:focus-visible, select:focus-visible, button:focus-visible {
+  outline: 2px solid var(--acento); outline-offset: 2px;
+}
+
+.rejilla-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+.form-ingrediente { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto; gap: 0.6rem; align-items: end; }
+
+/* ---------- Botones ---------- */
+.boton, .boton-secundario, .boton-quitar { font: inherit; cursor: pointer; }
+
+.boton {
+  background: var(--acento); color: #fff; border: 0;
+  padding: 0.6rem 1rem; border-radius: 6px; font-weight: 700;
+}
+.boton:hover { background: var(--acento-oscuro); }
+
+.boton-secundario {
+  background: transparent; color: var(--tinta);
+  border: 1px solid var(--borde); padding: 0.55rem 1rem; border-radius: 6px;
+}
+.boton-secundario:hover:not(:disabled) { border-color: var(--tinta-suave); }
+.boton-secundario:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.boton-quitar { background: none; border: 0; color: var(--acento); text-decoration: underline; padding: 0.25rem; }
+
+/* ---------- Recetas ---------- */
+.barra-recetas { display: grid; grid-template-columns: 1fr auto auto auto; gap: 0.5rem; align-items: center; }
+
+.linea { display: grid; grid-template-columns: 2fr 90px 1.3fr 90px auto; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+.linea-corta { display: grid; grid-template-columns: 2fr 120px auto; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+.costo-linea { text-align: right; font-weight: 700; }
+.aviso { background: var(--pistacho); color: var(--pistacho-oscuro); padding: 0.6rem 0.8rem; border-radius: 6px; margin: 0 0 1rem; }
+
+/* ---------- Tabla de ingredientes ---------- */
+.scroll-tabla { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.5rem 0.4rem; text-align: left; border-bottom: 1px solid var(--borde); }
+th { font-size: 0.8rem; color: var(--tinta-suave); }
+td .doble { display: grid; grid-template-columns: 1fr 90px; gap: 0.4rem; }
+.suave { color: var(--tinta-suave); font-size: 0.85rem; white-space: nowrap; }
+.vacio { color: var(--tinta-suave); margin: 0; }
+.ayuda { color: var(--tinta-suave); font-size: 0.875rem; margin: -0.5rem 0 1rem; }
+.suave small { display: block; }
+
+/* ---------- Resumen ---------- */
+.resumen { position: sticky; top: 1rem; }
+dl { margin: 0 0 1rem; }
+dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; }
+dt, dd { margin: 0; }
+dd { font-weight: 700; white-space: nowrap; }
+.suave-fila { color: var(--tinta-suave); font-size: 0.875rem; }
+.subtotal { border-top: 1px solid var(--borde); margin-top: 0.25rem; padding-top: 0.6rem !important; }
+
+.precio-destacado {
+  display: grid; gap: 0.1rem; margin-bottom: 1rem; padding: 1rem;
+  background: var(--pistacho); color: var(--pistacho-oscuro); border-radius: 8px;
+}
+.precio-destacado strong { font-family: "Fraunces", Georgia, serif; font-size: 2.2rem; line-height: 1.1; }
+.precio-destacado small { opacity: 0.8; }
+
+/* ---------- Celular ---------- */
+@media (max-width: 860px) {
+  .disposicion { grid-template-columns: 1fr; }
+  .resumen { position: static; }
+  .form-ingrediente, .rejilla-2 { grid-template-columns: 1fr 1fr; }
+  .barra-recetas { grid-template-columns: 1fr 1fr; }
+  .barra-recetas select { grid-column: 1 / -1; }
+  .linea { grid-template-columns: 1fr 1fr; }
+  .linea > select:first-child { grid-column: 1 / -1; }
+}
+
+/* ---------- Impresión ---------- */
+@media print {
+  .no-imprimir { display: none !important; }
+  body { background: #fff; }
+  .panel { border: 0; padding: 0.5rem 0; }
+  .disposicion { grid-template-columns: 1fr; }
+  .resumen { position: static; }
+  input, select { border: 0; padding: 0; appearance: none; }
+}
